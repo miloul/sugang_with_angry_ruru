@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <link rel="stylesheet" tyep="text/css" href="css/firstpage.css">
+    <title>방만들기</title>
+</head>
+<body>
+    <section id="room_intro">
+        <div>
+            <h2>모의수강신청 방만들기</h2>
+            대기방인원<span class="count_member"></span>/<span class="all_member"></span>
+            <button class="i_ready">준비</button>
+            <button class="invite">초대링크</button>
+        </div>
+    </section>
+    <section>
+        <h3><span>01 </span>설정</h3>
+        <div class="name">
+            닉네임설정 <input type="text">
+            <button class="ok">설정완료</button>
+        </div>
+        <div>
+            현재시간 <input type="time" readonly="true" id="current_time">
+        </div>
+        <div>
+            시작시간 <input type="time" readonly="true" id="start_time">
+        </div>
+    </section>
+    <section id="subject">
+        <h3><span>02 </span>과목설정</h3>
+        <div>
+            <button class="make">직접만들기</button>
+            <button class="get_sub">경북대 수강목록에서 가져오기</button>
+        </div>
+    </section>
+    <section style="width:100%; height:150px; overflow-y:scroll;">
+        <div class="result_table">
+            <table class=tables>
+                <thead>
+                    <tr>
+                        <td>교과목번호</td>
+                        <td>교과목명</td>
+                        <td>교과구분</td>
+                        <td>학점</td>
+                        <td>강의시간</td>
+                        <td>제한인원</td>
+                        <td>수강인원</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="result_table_b">
+            <table class=tables_body>
+                <thead>
+                    <tr>
+                        <td>교과목번호</td>
+                        <td>교과목명</td>
+                        <td>교과구분</td>
+                        <td>학점</td>
+                        <td>강의시간</td>
+                        <td>제한인원</td>
+                        <td>수강인원</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </section>
+    <section>
+        <h3><span>03 </span>내 수강꾸러미 목록</h3>
+        <div class="sugg" style="width:100%; height:150px; overflow-y:scroll;">
+            <table class=tables>
+                <thead>
+                    <tr>
+                        <td>교과목번호</td>
+                        <td>교과목명</td>
+                        <td>교과구분</td>
+                        <td>학점</td>
+                        <td>강의시간</td>
+                        <td>제한인원</td>
+                        <td>수강인원</td>
+                        <td>신청클릭<br>횟수</td>
+                        <td>수강신청</td>
+                    </tr>
+                </thead>
+            </table>
+            <table class=tables_body>
+                <thead>
+                    <tr>
+                        <td>교과목번호</td>
+                        <td>교과목명</td>
+                        <td>교과구분</td>
+                        <td>학점</td>
+                        <td>강의시간</td>
+                        <td>제한인원</td>
+                        <td>수강인원</td>
+                        <td>신청클릭<br>횟수</td>
+                        <td>수강신청</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </section>
+    <script src="js/firstp.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" tyep="text/css" href="css/firstpage.css">
+    <title>수강신청</title>
+</head>
+<body>
+    <section id="top">
+        <div class="title">
+            <h2><span>KNU</span>온라인수강신청</h2>
+            <button class="end">종료</button>
+            <button class="log">로그보기</button>
+        </div>
+    </section>
+    <section id="inform">
+        <div class="inform">
+            <div class="b">학번/성명 <input type="text" readonly="true"></div>
+            <div class="b">소속 <input type="text" readonly="true"></div>
+            <div class="b">수강제한학점 <input type="text" readonly="true"></div>
+        </div>
+    </section>
+    <section id="search">
+        <h3><span>01</span> 교과목검색</h3>
+        <div class="search">
+            <div class="b">교과목번호(10자리) <input type="text"></div>
+            <div class="b">자동입력방지문자 <input type="text">
+            <span>[이미지변경]</span></div>
+            <button class="enter">Enter</button>
+            <button class="reset">Reset</button>
+        </div>
+    </section>
+    <section id="s_result">
+        <h3><span>02</span> 교과목검색결과</h3>
+        <button class="input">입력</button>
+        <button class="cancel">취소</button>
+    </section>
+    <section style="width:100%; height:150px; overflow-y:scroll;">
+        <div class="result_table">
+            <table class=tables>
+                <thead>
+                    <tr>
+                        <td>교과목번호</td>
+                        <td>교과목명</td>
+                        <td>교과구분</td>
+                        <td>학점</td>
+                        <td>강의시간</td>
+                        <td>제한인원</td>
+                        <td>수강인원</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="result_table_b">
+            <table class=tables_body>
+                <thead>
+                    <tr>
+                        <td>교과목번호</td>
+                        <td>교과목명</td>
+                        <td>교과구분</td>
+                        <td>학점</td>
+                        <td>강의시간</td>
+                        <td>제한인원</td>
+                        <td>수강인원</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </section>
+    <section id="list">
+        <h3><span>03</span> 수강신청목록</h3>
+        <button class="modify">수정</button>
+        <button class="delete">삭제</button>
+    </section>
+    <section style="width:100%; height:200px; overflow-y:scroll;">
+        <div class="s_list">
+            <table class=tables>
+                <thead>
+                    <tr>
+                        <td>삭제선택</td>
+                        <td>교과목번호</td>
+                        <td>교과목명</td>
+                        <td>교과구분</td>
+                        <td>학점</td>
+                        <td>강의시간</td>
+                        <td>제한인원</td>
+                        <td>수강인원</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="result_table_b">
+            <table class=tables_body>
+                <thead>
+                    <tr>
+                        <td>삭제선택</td>
+                        <td>교과목번호</td>
+                        <td>교과목명</td>
+                        <td>교과구분</td>
+                        <td>학점</td>
+                        <td>강의시간</td>
+                        <td>제한인원</td>
+                        <td>수강인원</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </section>
+    <section id="sugg_list">
+        <div class="sugg_intro">
+            <h3><span>04</span> 수강꾸러미 목록</h3>
+            <p>수강신청의 <span>"신청"을 500회 이상</span> 클릭 시 "수강꾸러미목록"에서 <span>해당 과목이 삭제</span>됩니다.<br>* 만약 수강꾸러미목록에서 삭제된 교과목을 수강신청하려면 위의 "교과목검색"에서 수강신청 할 수 있음</p>
+        </div>
+    </section>
+    <section style="width:100%; height:200px; overflow-y:scroll;">
+        <div class="sugg_table">
+            <table class=tables>
+                <thead>
+                    <tr>
+                        <td>교과목번호</td>
+                        <td>교과목명</td>
+                        <td>교과구분</td>
+                        <td>학점</td>
+                        <td>강의시간</td>
+                        <td>제한인원</td>
+                        <td>수강인원</td>
+                        <td>신청클릭<br>횟수</td>
+                        <td>수강신청</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="result_table_b">
+            <table class=tables_body>
+                <thead>
+                    <tr>
+                        <td>교과목번호</td>
+                        <td>교과목명</td>
+                        <td>교과구분</td>
+                        <td>학점</td>
+                        <td>강의시간</td>
+                        <td>제한인원</td>
+                        <td>수강인원</td>
+                        <td>신청클릭<br>횟수</td>
+                        <td>수강신청</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </section>
+    <section id="see_log">
+        <div class="log_wrap">
+            <div class="cheer">
+                <h1>로그</h1>
+            </div>
+            <div class="btn">
+                <button class="close_btn">닫기</button>
+            </div>
+        </div>
+    </section>
+    <script src="js/sugang.js"></script>
+</body>
+</html>

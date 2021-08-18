@@ -1,0 +1,307 @@
+@font-face {
+    font-family: 'OTEnjoystoriesBA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/OTEnjoystoriesBA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    src: url("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2") format('woff2'),
+    url("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff") format('woff'),
+    url("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf") format('opentype');
+}
+
+#contents {
+    display: flex;
+    justify-content: center;
+}
+
+.title1 {
+    font-family: 'GmarketSansBold';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    position: relative;
+    font-size: 50px;
+}
+
+/* 버튼 공통 스타일 */
+button {
+    padding: 4px 13px;
+    border-width: 1px;
+    border-color: rgb(219, 219, 219);
+    display: inline-block;
+}
+
+/* 첫페이지 버튼 설정 */
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.room_btn, .test_btn {
+    font-family: 'GmarketSansMedium';
+    font-size: 35px;
+    /*border: none;*/
+    border-radius: 10px;
+    padding: 50px 100px;
+}
+
+.buttons p {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 29px;
+}
+
+/* 버튼 링크 지우기 */
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#room_intro a {
+    text-decoration: none;
+    color: white;
+}
+
+h2 {
+    display: inline-block;
+}
+
+/* 버튼 */
+.end {
+    background-color: rgb(179, 37, 37);
+    border-color: white;
+    color: white;
+    padding: 5px 20px;
+    margin-top: 25px;
+    float: right;
+}
+
+.log {
+    border-color: white;
+    padding: 5px 15px;
+    margin-top: 25px;
+    position: absolute; 
+    right: 77px;
+}
+
+.inform {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(207, 218, 219);
+}
+
+.b {
+    padding-right: 30px;
+}
+
+h3 {
+    display: inline-block;
+}
+
+.search {
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 3px solid rgb(199, 199, 199);
+}
+
+.search span {
+    color: rgb(62, 165, 190);
+    font-size: 5px;
+}
+
+
+.enter {
+    background-color: rgb(76, 185, 212);
+    color: rgb(19, 19, 177);
+    
+}
+
+.reset {
+    color: rgb(19, 19, 177);
+}
+
+
+.input, .modify {
+    background-color: rgb(45, 187, 156);
+}
+
+span {
+    color: rgb(179, 37, 37);
+}
+
+/* 테이블(표) 설정 */
+.tables {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgb(219, 219, 219);
+}
+
+.tables tr, td {
+    border: 1px solid rgb(199, 199, 199);
+}
+
+td {
+    text-align: center;
+}
+
+.tables_body {
+    overflow: scroll;
+    width: 100%;
+    height: 100px;
+    border-collapse: collapse;
+}
+
+.inform {
+    border-bottom: rgb(199, 199, 199);
+}
+
+.delete, .cancel {
+    margin-top: 25px;
+    float: right;
+}
+
+.input,.modify {
+    margin-top: 25px;
+    position: absolute; 
+    right: 65px;
+}
+
+.sugg_intro p {
+    margin-top: 0px;
+}
+
+/* 각각 항목 사이 빈공간 주기 */
+#list, #s_result, #search, #inform, #subject, #setting {
+    margin-bottom: 10px;
+}
+
+/* 웹 페이지 밑부분 빈공간 */
+body {
+    margin-bottom: 50px;
+}
+
+/* 직접만들기, 경대에서 가져오기 버튼 */
+.make, .get_sub {
+    margin-left: 10px;
+    font-family: 'GmarketSansMedium';
+}
+
+/* 준비, 시작버튼 */
+.ready, .start, .i_ready {
+    font-size: 20px;
+    font-family: 'GmarketSansMedium';
+    padding : 20px 30px;
+    margin-top: 25px;
+}
+
+.ready {
+    border: none;
+    position: absolute; 
+    right: 115px;
+}
+
+.start {
+    background-color: rgb(179, 37, 37);
+    border: none;
+    float: right;
+}
+
+.i_ready {
+    border: none;
+    float: right;
+}
+
+/* 초대하기 버튼 */
+.invite {
+    margin-left: 10px;
+    margin-top: 5px;
+    padding : 15px 20px;
+    font-family: 'GmarketSansMedium';
+}
+
+/* 닉네임, 대기방인원, 가상시계, 로그인유무 */
+.name, .member, .clock, .login {
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+/* +, -, 닉네임 설정완료 버튼 */
+.p, .m, .ok {
+    font-family: 'GmarketSansMedium';
+}
+
+/* 로그 */
+#see_log {
+    position: fixed;    
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+#see_log .log_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 600px;
+    background-color: white;
+    border: 3px solid rgb(199, 199, 199);
+    border-radius: 20px;
+}
+
+/* 시간선택, 로그인 체크박스 결과 */
+.result_l {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.5;
+    margin-bottom: 80px;
+}
+
+.result_l .result_wrap, .result_c .result_wrap {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.setting_wrap {
+    border: 3px solid rgb(199, 199, 199);
+    padding: 10px 10px 10px 10px;
+}
+
+.notice {
+    font-size: 10px;
+}
