@@ -11,7 +11,9 @@
     <section id="room_intro">
         <div>
             <h2>모의수강신청 방만들기</h2>
-            대기방인원<span class="count_member"></span>/<span class="all_member"></span>
+            <span class="mm">
+                [대기방인원 <span class="count_member"></span>/<span id="all_member">1</span>]
+            </span>
             <button class="ready">준비</button>
             <button class="start"><a href=4.html>시작</a></button>
             <button class="invite">초대링크</button>
@@ -22,8 +24,8 @@
         <div class="setting_wrap">
             <div class="member">
                 대기방 인원
-                <button class="p">+</button>
-                <button class="m">-</button>
+                <button id="p">+</button>
+                <button id="m">-</button>
             </div>
             <div class="clock">
                 가상시계
@@ -47,8 +49,8 @@
     <section>
         <h3><span>01 </span>설정</h3>
         <div class="name">
-            닉네임설정 <input type="text">
-            <button class="ok">설정완료</button>
+            닉네임설정 <input type="text" id="name_txt">
+            <button id="ok">설정완료</button>
         </div>
     </section>
     <section id="subject">

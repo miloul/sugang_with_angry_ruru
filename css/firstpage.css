@@ -310,3 +310,9 @@ body {
 .ctime {
     margin-left: 10px;
 }
+
+/* 대기방 인원 */
+.mm {
+    font-family: 'GmarketSansBold';
+    color: black;
+}
