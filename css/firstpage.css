@@ -305,3 +305,8 @@ body {
 .notice {
     font-size: 10px;
 }
+
+/* 초대자 */
+.ctime {
+    margin-left: 10px;
+}
