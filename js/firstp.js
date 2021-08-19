@@ -11,6 +11,17 @@ const clock_ModifyButton = document.querySelector(".time_modify");
 
 let countMember = document.querySelector(".count_member");
 
+//준비 버튼
+readyButton.addEventListener('click', ready);
+function ready() {
+
+}
+
+startButton.addEventListener('click', start);
+function start() {
+    
+}
+
 // +, - 버튼
 document.getElementById("p").addEventListener('click', plus);
 function plus() {
@@ -76,4 +87,21 @@ function submit() {
 makeButton.addEventListener('click', makeSub);
 function makeSub() {
     
+}
+
+//과목설정 - 가져오기
+getsubButton.addEventListener('click', openGetsub);
+function openGetsub() {
+
+}
+
+//가상시계 설정완료, 수정 버튼
+clock_DoneButton.addEventListener('click', submit_clock);
+function submit_clock() {
+
+}
+
+clock_ModifyButton.addEventListener('click', modify_clock);
+function modify_clock() {
+
 }

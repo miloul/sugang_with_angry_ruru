@@ -57,7 +57,7 @@ button {
     justify-content: center;
 }
 
-.room_btn, .test_btn {
+.room_btn, .test_btn,.re,.home {
     font-family: 'GmarketSansMedium';
     font-size: 35px;
     /*border: none;*/
@@ -89,10 +89,14 @@ h2 {
 }
 
 /* 버튼 */
+.title a {
+    text-decoration: none;
+    color: white;
+}
+
 .end {
     background-color: rgb(179, 37, 37);
     border-color: white;
-    color: white;
     padding: 5px 20px;
     margin-top: 25px;
     float: right;
@@ -315,4 +319,14 @@ body {
 .mm {
     font-family: 'GmarketSansBold';
     color: black;
+}
+
+/* 종료페이지 */
+.title1 h2 {
+    margin: 0px;
+    padding-top: 10px;
+}
+
+.title1 span {
+    color: gray;
 }
