@@ -48,9 +48,9 @@
     </section>
     <section>
         <h3><span>01 </span>설정</h3>
-        <form class="name">
+        <form id="name">
             닉네임설정 <input type="text" id="name_txt">
-            <input type="button" id="ok" value="설정완료"></input>
+            <input type="submit" id="ok" value="설정완료"></input>
         </form>
     </section>
     <section id="subject">
@@ -145,9 +145,12 @@
     <script src="js/firstp.js"></script>
     <script>
         var socket = io();
-            $('#subj').on('submit', function(e) {
-                socket.emit('update class', $('#1').val(), $('#2').val(),$('#3').val(),$('#4').val(),$('#5').val(),$('#6').val(),$('#7').val())
-            });
+        $('#subj').on('submit', function(e) {
+            socket.emit('update class', $('#1').val(), $('#2').val(),$('#3').val(),$('#4').val(),$('#5').val(),$('#6').val(),$('#7').val())
+        });
+        // $('#name').on('submit', function(e) {
+        //     socket.emit('update name', $('#name_txt').val())
+        // });
     </script>
 </body>
 </html>
