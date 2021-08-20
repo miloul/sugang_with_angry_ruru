@@ -84,9 +84,21 @@ function submit() {
 }
 
 //과목설정 - 직접 만들기
-makeButton.addEventListener('click', makeSub);
-function makeSub() {
-    
+const make = document.querySelector("#set_myself");
+
+makeButton.addEventListener('click', openSub);
+function openSub() {
+    make.style.display='flex';
+}
+
+function closeSub() {
+    make.style.display='none';
+}
+
+window.onclick=function(event) {
+    if(event.target==make){
+        closeSub();
+    }
 }
 
 //과목설정 - 가져오기

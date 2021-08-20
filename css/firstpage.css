@@ -261,8 +261,8 @@ body {
     font-family: 'GmarketSansMedium';
 }
 
-/* 로그 */
-#see_log {
+/* 로그 + 과목 직접설정 */
+#see_log, #set_myself {
     position: fixed;    
     display: none;
     justify-content: center;
@@ -274,7 +274,7 @@ body {
     z-index: 999;
 }
 
-#see_log .log_wrap {
+.log_wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -282,6 +282,17 @@ body {
     width: 600px;
     height: 600px;
     background-color: white;
+    border: 3px solid rgb(199, 199, 199);
+    border-radius: 20px;
+}
+
+.sub_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 90%;
+    height: 150px;
     border: 3px solid rgb(199, 199, 199);
     border-radius: 20px;
 }

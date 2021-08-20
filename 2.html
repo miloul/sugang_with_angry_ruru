@@ -30,7 +30,7 @@
             <div class="clock">
                 가상시계
                 <div id="result_c">
-                    <div class="result_wrap">
+                    <form class="result_wrap">
                         <div>
                             현재시간 <input type="time" id="current_time">
                         </div>
@@ -38,26 +38,41 @@
                             시작시간 <input type="time" id="start_time">
                         </div>
                         <div class="time_ok">
-                            <button class="time_submit">완료</button>
-                            <button class="time_modify">수정</button>
+                            <input type="button" class="time_submit" value="완료"></input>
+                            <input type="button" class="time_modify" value="수정"></input>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
     <section>
         <h3><span>01 </span>설정</h3>
-        <div class="name">
+        <form class="name">
             닉네임설정 <input type="text" id="name_txt">
-            <button id="ok">설정완료</button>
-        </div>
+            <input type="button" id="ok" value="설정완료"></input>
+        </form>
     </section>
     <section id="subject">
         <h3><span>02 </span>과목설정<span class="notice"> (경쟁률은 알아서 인원조정 부탁드려요)</span></h3>
         <div>
             <button class="make">직접만들기</button>
             <button class="get_sub">경북대 수강목록에서 가져오기</button>
+        </div>
+    </section>
+    <section id="set_myself">
+        <div class="sub_wrap">
+            <form id="subj">
+                <h3>직접만들기 : </h3>
+                <input type="text" placeholder="교과목번호" id="1">
+                <input type="text" placeholder="교과목명" id="2">
+                <input type="text" placeholder="교과구분" id="3">
+                <input type="text" placeholder="학점" id="4">
+                <input type="text" placeholder="강의시간" id="5">
+                <input type="text" placeholder="제한인원" id="6">
+                <input type="text" placeholder="수강인원" id="7">
+                <input type="submit" value="완료">
+            </form>
         </div>
     </section>
     <section style="width:100%; height:150px; overflow-y:scroll;">
@@ -128,5 +143,11 @@
         </div>
     </section>
     <script src="js/firstp.js"></script>
+    <script>
+        var socket = io();
+            $('#subj').on('submit', function(e) {
+                socket.emit('update class', $('#1').val(), $('#2').val(),$('#3').val(),$('#4').val(),$('#5').val(),$('#6').val(),$('#7').val())
+            });
+    </script>
 </body>
 </html>
