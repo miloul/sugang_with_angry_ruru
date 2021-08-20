@@ -33,6 +33,10 @@ io.on('connection', function(socket) {
                 VALUES (?, ?, ?, ?, ?, ?, ?)", [cNumber, cName, cType, cCredit, cTime, pLimit, pNow]),
         io.emit('update finish', cNumberBox) //, cName, cType, cCredit, cTime, pLimit, pNow)
     });
+
+    // socket.on('update name', function(){
+        //이름업데이트
+    // });
 });
 
 http.listen(3000, function() {
