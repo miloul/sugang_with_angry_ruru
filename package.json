@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/miloul/sugang_with_angry_ruru#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "socket.io": "^4.1.3"
   }
