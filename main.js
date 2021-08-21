@@ -19,13 +19,13 @@ app.get('/sugang_practice', (req,res) => {
     res.sendFile(__dirname + "/1.html");
 });
 
+
+var count=0;
+    
+var counttoID={}; //[count] : socket.id
+var counttoName={}; //[count] : Name
+
 app.get('/sugang_practice/room', (req,res) => {
-
-    var count=0;
-
-    var counttoID={}; //[count] : socket.id
-    var counttoName={}; //[count] : Name
-
     function MakeNamesList(){
         var Names=[];
         for(var key in counttoID){
@@ -68,7 +68,9 @@ app.get('/sugang_practice/room', (req,res) => {
         socket.on('disconnect', function(){
             delete counttoID[findcount(socket.id)];
             delete counttoName[findcount(socket.id)];
+            console.log('user disconnected: ', socket.id);
             io.emit('listupdate', MakeNamesList());
+            count--;
     	});
     });
 
