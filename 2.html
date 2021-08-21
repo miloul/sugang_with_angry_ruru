@@ -45,6 +45,9 @@
                 </div>
             </div>
         </div>
+        <div>
+            <textarea id="waitingList" class="waitingList" readonly></textarea>
+        </div>
     </section>
     <section>
         <h3><span>01 </span>설정</h3>
@@ -144,6 +147,14 @@
         $('#name').on('submit', function(e) {
             socket.emit('update name', $('#name_txt').val())
         });
+
+        socket.on('listupdate', function(Names){
+                  var waitingListstring='';
+                  for(const Name in Names){
+                      waitingListstring+=(Names[Name]+'\n');
+                  }
+                  $('#waitingList').val(waitingListstring);
+              });
     </script>
 </body>
 </html>

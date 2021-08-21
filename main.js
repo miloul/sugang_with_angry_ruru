@@ -4,7 +4,10 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const fs = require('fs');
 const path = require('path');
-const view = require('./js/view.js');
+//const view = require('./js/view.js');
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const fetch = require("node-fetch");
 
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/js'));
@@ -17,6 +20,58 @@ app.get('/sugang_practice', (req,res) => {
 });
 
 app.get('/sugang_practice/room', (req,res) => {
+
+    var count=0;
+
+    var counttoID={}; //[count] : socket.id
+    var counttoName={}; //[count] : Name
+
+    function MakeNamesList(){
+        var Names=[];
+        for(var key in counttoID){
+            Names.push(counttoName[key]);
+        }
+        return Names;
+    }
+
+    function findcount(id){
+        for(var key in counttoID){
+            if(counttoID[key]==id){
+                return key;
+            }
+        }
+        return -1;
+    }
+
+    io.on('connection', function(socket){
+        if(findcount(socket.id)!=-1)
+            return;
+        console.log('user connected: ', socket.id);
+        count++;
+
+        counttoID[count]=socket.id;
+        fetch('https://nickname.hwanmoo.kr/?format=json&count=1')
+            .then(res => res.json())
+            .then(res => {  
+                counttoName[count] = res.words[0];
+            })
+            .then(() => {
+                io.emit('listupdate', MakeNamesList());
+            })
+
+
+        socket.on('mychangeName', function(newName){
+            counttoName[findcount(socket.id)]=newName;
+            io.emit('listupdate', MakeNamesList());
+        });
+
+        socket.on('disconnect', function(){
+            delete counttoID[findcount(socket.id)];
+            delete counttoName[findcount(socket.id)];
+            io.emit('listupdate', MakeNamesList());
+    	});
+    });
+
     res.sendFile(__dirname + "/2.html");
 });
 
@@ -371,4 +426,6 @@ app.get('/sugang_practice/room/result', (req,res) => {
 //     res.send(html);
 // });
 
-app.listen(3000, () => console.log('Server is opened!'));
+http.listen(3000, function() {
+    console.log("SERVER");
+})
