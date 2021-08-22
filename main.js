@@ -11,10 +11,12 @@ const fetch = require("node-fetch");
 const homeRouter = require("./routes/home.js");
 const roomRouter = require("./routes/room.js");
 const examRouter = require("./routes/exam.js");
+const spawn=require('child_process').spawn;
 
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/js'));
 app.use(express.static(__dirname + '/routes'));
+app.use(express.static(__dirname + '/scrapping'));
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(compression());
@@ -79,6 +81,17 @@ app.use(compression());
                 console.log(counttoName);
 
                 count--;
+            });
+
+            socket.on('search', function(first, second, third, yr, txt){
+                const result = spawn('python3', ['scraping/datachange.py', first, second, third, yr, txt]);
+
+                result.stdout.on('data', function(data){
+                    io.emit('autocomplete', data.toString());
+                });
+                result.stderr.on('data', function(data){ 
+                    console.log(data.toString()); 
+                });
             });
         });
         res.sendFile(__dirname + "/2.html");

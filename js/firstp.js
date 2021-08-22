@@ -4,10 +4,17 @@ const readyButton = document.querySelector(".ready");
 const startButton = document.querySelector(".start");
 const nameButton = document.querySelector("#ok");
 const makeButton= document.querySelector(".make");
-const getsubButton = document.querySelector(".get_sub");
+const getsubButton = document.querySelector(".getsub");
 
 const clock_DoneButton = document.querySelector(".time_submit");
 const clock_ModifyButton = document.querySelector(".time_modify");
+
+const selectbox0 = document.querySelector("#selectbox");
+const selectbox1 = document.querySelector("#subselectbox01");
+const selectbox2 = document.querySelector("#subselectbox02");
+const selectbox3 = document.querySelector("#subselectbox03");
+const querybox = document.querySelector("#query");
+const automaker = document.querySelector("#automaker");
 
 let countMember = document.querySelector(".count_member");
 
@@ -111,7 +118,6 @@ function closeSearch() {
 
 //과목설정창 없애기
 window.onclick=function(event) {
-    console.log(event.target==get,event.target==make);
     if(event.target==get){
         closeSearch();
     }
@@ -131,3 +137,18 @@ clock_ModifyButton.addEventListener('click', modify_clock);
 function modify_clock() {
 
 }
+
+
+
+//선택박스 0 1 2 3\
+/*const spawn=require('child_process').spawn;
+
+const result = spawn('python3', ['../scraping/datachange.py', 'NULL', 'NULL', 'NULL', 'NULL', '박종육']);
+
+result.stdout.on('data', function(data){
+    console.log(data.toString());
+});
+result.stderr.on('data', function(data){ 
+    console.log(data.toString()); 
+});*/
+

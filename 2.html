@@ -60,7 +60,7 @@
         <h3><span>02 </span>과목설정<span class="notice"> (경쟁률은 알아서 인원조정 부탁드려요)</span></h3>
         <div>
             <button class="make">직접만들기</button>
-            <button class="get_sub">경북대 수강목록에서 가져오기</button>
+            <button class="getsub">경북대 수강목록에서 가져오기</button>
         </div>
     </section>
     <section id="set_myself">
@@ -78,18 +78,19 @@
             </div>
         </div>
     </section>
-    <section id="set_fromdata" style="display: none">
-        <div class="sub_wrap">
-            <div id="sub">
-                <h3>가져오기 : </h3>
-                <input type="text" placeholder="교과목번호" id="11">
-                <input type="text" placeholder="교과목명" id="12">
-                <input type="text" placeholder="교과구분" id="13">
-                <input type="text" placeholder="학점" id="14">
-                <input type="text" placeholder="강의시간" id="15">
-                <input type="text" placeholder="제한인원" id="16">
-                <input type="text" placeholder="수강인원" id="17">
-                <input type="submit" value="완료">
+    <section id="set_fromdata">
+        <div class="con_select">
+            <div class="bbs_info">
+                <div class="search" style="float:left; width: 100%;">	
+                    <select id="selectbox"></select>
+                    <select id="subselectbox01" class="sub" style="display: inline-block;"></select> 
+                    <select id="subselectbox02" class="sub02" style="display: inline-block;"></select>
+                    <select id="subselectbox03" class="sub03" style="display: inline-block;"></select>
+                    <input id="query" type="text" title="검색어 입력" maxlength="20" class="input_text"autocomplete="off" placeholder="검색어를 입력해 주세요.">
+                    <div id="dropdown">
+                        <select name="list" id="list"></select>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -161,12 +162,25 @@
         });
 
         socket.on('listupdate', function(Names){
-                  var waitingListstring='';
-                  for(const Name in Names){
-                      waitingListstring+=(Names[Name]+'\n');
-                  }
-                  $('#waitingList').val(waitingListstring);
-              });
+            var waitingListstring='';
+            for(const Name in Names){
+                waitingListstring+=(Names[Name]+'\n');
+            }
+            $('#waitingList').val(waitingListstring);
+        });
+
+        $('#query').on('keyup', function(){
+            var first = 'NULL';
+            var second = 'NULL';
+            var third = 'NULL';
+            var yr = 'NULL';
+            var txt = $('#query').val();
+            socket.emit('search', first, second, third, yr, txt);
+        })
+        socket.on('autocomplete', function(data){
+            console.log(data); // data에 결과값 나옴.
+        });
+            
     </script>
 </body>
 </html>

@@ -212,7 +212,7 @@ body {
 }
 
 /* 직접만들기, 경대에서 가져오기 버튼 */
-.make, .get_sub {
+.make, .getsub {
     margin-left: 10px;
     font-family: 'GmarketSansMedium';
 }
@@ -262,7 +262,7 @@ body {
 }
 
 /* 로그 + 과목 직접설정 */
-#see_log, #set_myself {
+#see_log, #set_myself, #set_fromdata{
     position: fixed;    
     display: none;
     justify-content: center;
