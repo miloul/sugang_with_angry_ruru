@@ -2,100 +2,104 @@ const express = require('express');
 const app = express(); 
 const bodyParser = require('body-parser');
 const compression = require('compression');
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 //const view = require('./js/view.js');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const fetch = require("node-fetch");
+const homeRouter = require("./routes/home.js");
+const roomRouter = require("./routes/room.js");
+const examRouter = require("./routes/exam.js");
 
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/js'));
+app.use(express.static(__dirname + '/routes'));
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(compression());
 
-app.get('/sugang_practice', (req,res) => {
-    res.sendFile(__dirname + "/1.html");
-});
-
-var count=0;
+    var count=0;
     
-var counttoID={}; //[count] : socket.id
-var counttoName={}; //[count] : Name
+    var counttoID={}; //[count] : socket.id
+    var counttoName={}; //[count] : Name
 
-app.get('/sugang_practice/room', (req,res) => {
-    function MakeNamesList(){
-        var Names=[];
-        for(var key in counttoID){
-            Names.push(counttoName[key]);
-            console.log(counttoName[key]);
-        }
-        return Names;
-    }
-
-    function findcount(id){
-        for(var key in counttoID){
-            if(counttoID[key]==id){
-                return key;
+    app.get('/sugang_practice/room', (req,res) => {
+        function MakeNamesList(){
+            var Names=[];
+            for(var key in counttoID){
+                Names.push(counttoName[key]);
+                console.log(counttoName[key]);
             }
+            return Names;
         }
-        return -1;
-    }
 
-        
+        function findcount(id){
+            for(var key in counttoID){
+                if(counttoID[key]==id){
+                    return key;
+                }
+            }
+            return -1;
+        }
 
-    io.on('connection', function(socket){
-        if(findcount(socket.id)!=-1)
-            return;
+            
 
-        console.log('user connected: ', socket.id);
-        
-        count++;
-        console.log(count);
-        console.log(counttoName);
+        io.on('connection', function(socket){
+            if(findcount(socket.id)!=-1)
+                return;
 
-        counttoID[count]=socket.id;
-        fetch('https://nickname.hwanmoo.kr/?format=json&count=1')
-            .then(res => res.json())
-            .then(res => {  
-                counttoName[count] = res.words[0];
-            })
-            .then(() => {
+            console.log('user connected: ', socket.id);
+            
+            count++;
+            console.log(count);
+            console.log(counttoName);
+
+            counttoID[count]=socket.id;
+            fetch('https://nickname.hwanmoo.kr/?format=json&count=1')
+                .then(res => res.json())
+                .then(res => {  
+                    counttoName[count] = res.words[0];
+                })
+                .then(() => {
+                    io.emit('listupdate', MakeNamesList());
+                })
+
+            socket.on('mychangeName', function(newName){
+                counttoName[findcount(socket.id)]=newName;
                 io.emit('listupdate', MakeNamesList());
-            })
+                console.log(counttoName);
+            });
+            socket.on('disconnect', function(){
+                console.log(findcount(socket.id));
+                delete counttoID[findcount(socket.id)];
+                delete counttoName[findcount(socket.id)];
+                console.log('user disconnected: ', socket.id);
+                io.emit('listupdate', MakeNamesList());
+                console.log(counttoName);
 
-        socket.on('mychangeName', function(newName){
-            counttoName[findcount(socket.id)]=newName;
-            io.emit('listupdate', MakeNamesList());
-            console.log(counttoName);
+                count--;
+            });
         });
-        socket.on('disconnect', function(){
-            console.log(findcount(socket.id));
-            delete counttoName[findcount(socket.id)];
-            delete counttoID[findcount(socket.id)];
-            console.log('user disconnected: ', socket.id);
-            io.emit('listupdate', MakeNamesList());
-            console.log(counttoName);
-            count--;
-    	});
+        res.sendFile(__dirname + "/2.html");
     });
-    res.sendFile(__dirname + "/2.html");
-});
 
-app.get('/sugang_practice/exam', (req,res) => {
-    res.sendFile(__dirname + "/3.html");
-});
+    app.use('/sugang_practice', homeRouter);
+    app.use('/sugang_practice/room', roomRouter);
+    app.use('/sugang_practice/exam', examRouter);
 
-app.get('/sugang_practice/room/start', (req,res) => {
-    res.sendFile(__dirname + "/4.html");
-});
+app.use((req,res,next) => {
+    res.status(404).send('Sorry can\'t find that!');
+  });
 
-app.get('/sugang_practice/room/result', (req,res) => {
-    res.sendFile(__dirname + "/5.html");
-});
+  app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+  });
 
-
+  http.listen(3000, function() {
+    console.log("SERVER");
+    });
 // app.get('/sugang_practice', (req, res) => {
 //     const title = 'KNU 수강신청 연습사이트';
 //     const html = view.printScreen(title, 
@@ -433,7 +437,3 @@ app.get('/sugang_practice/room/result', (req,res) => {
 //     `);
 //     res.send(html);
 // });
-
-http.listen(3000, function() {
-    console.log("SERVER");
-})
