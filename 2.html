@@ -12,7 +12,7 @@
         <div>
             <h2>모의수강신청 방만들기</h2>
             <span class="mm">
-                [대기방인원 <span class="count_member"></span>/<span id="all_member">1</span>]
+                [대기방인원 <span class="count_member" id="count_member"></span>/<span id="all_member">1</span>]
             </span>
             <button class="ready">준비</button>
             <button class="start"><a href=/sugang_practice/room/start>시작</a></button>
@@ -166,10 +166,14 @@
 
         socket.on('listupdate', function(Names){
             var waitingListstring='';
+            var cnt = 0;
             for(const Name in Names){
                 waitingListstring+=(Names[Name]+'\n');
+                cnt++;
             }
             $('#waitingList').val(waitingListstring);
+            const count_member = document.querySelector("#count_member");
+            count_member.innerText=cnt;
         });
 
         $('#query').on('keyup', function(){
