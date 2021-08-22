@@ -30,7 +30,7 @@
             <div class="clock">
                 가상시계
                 <div id="result_c">
-                    <form class="result_wrap">
+                    <div class="result_wrap">
                         <div>
                             현재시간 <input type="time" id="current_time">
                         </div>
@@ -41,7 +41,7 @@
                             <input type="button" class="time_submit" value="완료"></input>
                             <input type="button" class="time_modify" value="수정"></input>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,10 +51,10 @@
     </section>
     <section>
         <h3><span>01 </span>설정</h3>
-        <form id="name">
+        <div id="name">
             닉네임설정 <input type="text" id="name_txt">
             <input type="submit" id="ok" value="설정완료"></input>
-        </form>
+        </div>
     </section>
     <section id="subject">
         <h3><span>02 </span>과목설정<span class="notice"> (경쟁률은 알아서 인원조정 부탁드려요)</span></h3>
@@ -65,7 +65,7 @@
     </section>
     <section id="set_myself">
         <div class="sub_wrap">
-            <form id="subj">
+            <div id="subj">
                 <h3>직접만들기 : </h3>
                 <input type="text" placeholder="교과목번호" id="1">
                 <input type="text" placeholder="교과목명" id="2">
@@ -75,7 +75,7 @@
                 <input type="text" placeholder="제한인원" id="6">
                 <input type="text" placeholder="수강인원" id="7">
                 <input type="submit" value="완료">
-            </form>
+            </div>
         </div>
     </section>
     <section style="width:100%; height:150px; overflow-y:scroll;">
@@ -143,9 +143,6 @@
         var socket = io();
         $('#subj').on('submit', function(e) {
             socket.emit('update class', $('#1').val(), $('#2').val(),$('#3').val(),$('#4').val(),$('#5').val(),$('#6').val(),$('#7').val())
-        });
-        $('#name').on('submit', function(e) {
-            socket.emit('update name', $('#name_txt').val())
         });
 
         socket.on('listupdate', function(Names){

@@ -19,7 +19,6 @@ app.get('/sugang_practice', (req,res) => {
     res.sendFile(__dirname + "/1.html");
 });
 
-
 var count=0;
     
 var counttoID={}; //[count] : socket.id
@@ -30,6 +29,7 @@ app.get('/sugang_practice/room', (req,res) => {
         var Names=[];
         for(var key in counttoID){
             Names.push(counttoName[key]);
+            console.log(counttoName[key]);
         }
         return Names;
     }
@@ -43,11 +43,17 @@ app.get('/sugang_practice/room', (req,res) => {
         return -1;
     }
 
+        
+
     io.on('connection', function(socket){
         if(findcount(socket.id)!=-1)
             return;
+
         console.log('user connected: ', socket.id);
+        
         count++;
+        console.log(count);
+        console.log(counttoName);
 
         counttoID[count]=socket.id;
         fetch('https://nickname.hwanmoo.kr/?format=json&count=1')
@@ -59,21 +65,22 @@ app.get('/sugang_practice/room', (req,res) => {
                 io.emit('listupdate', MakeNamesList());
             })
 
-
         socket.on('mychangeName', function(newName){
             counttoName[findcount(socket.id)]=newName;
             io.emit('listupdate', MakeNamesList());
+            console.log(counttoName);
         });
-
         socket.on('disconnect', function(){
+            console.log(findcount(socket.id));
             delete counttoID[findcount(socket.id)];
             delete counttoName[findcount(socket.id)];
             console.log('user disconnected: ', socket.id);
             io.emit('listupdate', MakeNamesList());
+            console.log(counttoName);
+
             count--;
     	});
     });
-
     res.sendFile(__dirname + "/2.html");
 });
 

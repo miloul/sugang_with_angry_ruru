@@ -79,6 +79,7 @@ function submit() {
     }
     else {
         name.disabled=true;
+        socket.emit('mychangeName', $('#name_txt').val());
         alert("설정완료");
     }
 }
