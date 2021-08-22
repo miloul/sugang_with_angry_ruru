@@ -55,7 +55,7 @@
     <section>
         <h3><span>01 </span>설정</h3>
         <div id="name">
-            닉네임설정 <input type="text" id="name_txt">
+            닉네임설정 <input type="text" id="name_txt" placeholder = "">
             <input type="submit" id="ok" value="설정완료"></input>
         </div>
     </section>
@@ -177,7 +177,12 @@
             $('#waitingList').val(waitingListstring);
             const count_member = document.querySelector("#count_member");
             count_member.innerText=cnt;
+            
         });
+        socket.on('changeNameHolder', function(NameHolder){         //건든 부분2
+            var new_holder = NameHolder;
+            $('#name_txt').attr('placeholder',new_holder);
+        } )                                                         // 건든 부분2 끝
 
         $('#query').on('keyup', function(){
             var first = 'NULL';

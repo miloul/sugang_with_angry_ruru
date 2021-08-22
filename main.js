@@ -26,7 +26,7 @@ app.use(compression());
     var counttoID={}; //[count] : socket.id
     var counttoName={}; //[count] : Name
 
-    app.get('/sugang_practice/room', (req,res) => {
+    app.get('/sugang_practice/room/:roomID', (req,res) => {
         function MakeNamesList(){
             var Names=[];
             for(var key in counttoID){
@@ -64,6 +64,7 @@ app.use(compression());
                     counttoName[count] = res.words[0];
                 })
                 .then(() => {
+                    io.to(socket.id).emit('changeNameHolder',counttoName[count]);
                     io.emit('listupdate', MakeNamesList());
                 })
 
