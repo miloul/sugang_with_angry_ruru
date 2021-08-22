@@ -84,9 +84,10 @@ app.use(compression());
             });
 
             socket.on('search', function(first, second, third, yr, txt){
-                const result = spawn('python3', ['scraping/datachange.py', first, second, third, yr, txt]);
+                const result = spawn('python', ['scraping/datachange.py', first, second, third, yr, txt]);
 
                 result.stdout.on('data', function(data){
+                    console.log(data.toString());
                     io.emit('autocomplete', data.toString());
                 });
                 result.stderr.on('data', function(data){ 

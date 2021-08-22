@@ -15,7 +15,7 @@
                 [대기방인원 <span class="count_member" id="count_member"></span>/<span id="all_member">1</span>]
             </span>
             <button class="ready">준비</button>
-            <button class="start"><a href=/sugang_practice/room/start>시작</a></button>
+            <button class="start" onClick="location.href='/sugang_practice/room/start'">시작</a></button>
             <button class="invite">초대링크</button>
         </div>
     </section>
@@ -46,7 +46,10 @@
             </div>
         </div>
         <div>
-            <textarea id="waitingList" class="waitingList" readonly></textarea>
+            <h3><span>* </span>대기 중..</h3>
+            <div>
+                <textarea id="waitingList" class="waitingList" readonly="true" rows="5" cols="50" style="border: 3px solid rgb(199, 199, 199)"></textarea>
+            </div>
         </div>
     </section>
     <section>
@@ -82,13 +85,13 @@
         <div class="con_select">
             <div class="bbs_info">
                 <div class="search" style="float:left; width: 100%;">	
-                    <select id="selectbox"></select>
-                    <select id="subselectbox01" class="sub" style="display: inline-block;"></select> 
-                    <select id="subselectbox02" class="sub02" style="display: inline-block;"></select>
-                    <select id="subselectbox03" class="sub03" style="display: inline-block;"></select>
+                    <select id="selectbox"></select> <!--대학-->
+                    <select id="subselectbox01" class="sub" style="display: inline-block;"></select> <!--단과대학-->
+                    <select id="subselectbox02" class="sub02" style="display: inline-block;"></select><!--과-->
+                    <select id="subselectbox03" class="sub03" style="display: inline-block;"></select><!--학년-->
                     <input id="query" type="text" title="검색어 입력" maxlength="20" class="input_text"autocomplete="off" placeholder="검색어를 입력해 주세요.">
                     <div id="dropdown">
-                        <select name="list" id="list"></select>
+                        <select name="list" id="list"></select> <!--결과-->
                     </div>
                 </div>
             </div>
@@ -183,7 +186,7 @@
             var yr = 'NULL';
             var txt = $('#query').val();
             socket.emit('search', first, second, third, yr, txt);
-        })
+        });
         socket.on('autocomplete', function(data){
             console.log(data); // data에 결과값 나옴.
         });
