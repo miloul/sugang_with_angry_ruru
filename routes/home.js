@@ -51,11 +51,11 @@ router.post('/setname/process',(req,res) => {
     const room_num = post.room_num;
     const student_name = post.name;
     db.query('INSERT INTO student (roomNumber, userID) VALUES(?, ?)',[room_num, student_name], (err, result) => {
-        res.redirect(`/sugang_practice/room`);
+        res.redirect(`/sugang_practice/room/${room_num}`);
     });
 });
 
-router.get(__dirname+'/setname/member/:roomID',(req,res) => {
+router.get('/setname/member/:roomID',(req,res) => {
     const html = `
     <!DOCTYPE html>
     <html lang="en">
@@ -72,7 +72,7 @@ router.get(__dirname+'/setname/member/:roomID',(req,res) => {
                 <h1>set name</h1>
             </div>
             <div>
-                <form action="/sugang_practice/room/${req.params.roomID}" method="post">
+                <form action="/sugang_practice/setname/process" method="post">
                     <input type="hidden" name="room_num" value="${req.params.roomID}">
                     <input type="text" name="name">
                     <input type="submit">
