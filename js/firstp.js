@@ -4,10 +4,17 @@ const readyButton = document.querySelector(".ready");
 const startButton = document.querySelector(".start");
 const nameButton = document.querySelector("#ok");
 const makeButton= document.querySelector(".make");
-const getsubButton = document.querySelector(".get_sub");
+const getsubButton = document.querySelector(".getsub");
 
 const clock_DoneButton = document.querySelector(".time_submit");
 const clock_ModifyButton = document.querySelector(".time_modify");
+
+const selectbox0 = document.querySelector("#selectbox");
+const selectbox1 = document.querySelector("#subselectbox01");
+const selectbox2 = document.querySelector("#subselectbox02");
+const selectbox3 = document.querySelector("#subselectbox03");
+const querybox = document.querySelector("#query");
+const automaker = document.querySelector("#automaker");
 
 let countMember = document.querySelector(".count_member");
 
@@ -79,6 +86,7 @@ function submit() {
     }
     else {
         name.disabled=true;
+        socket.emit('mychangeName', $('#name_txt').val());
         alert("설정완료");
     }
 }
@@ -95,17 +103,29 @@ function closeSub() {
     make.style.display='none';
 }
 
+
+//과목설정 - 가져오기
+const get = document.querySelector("#set_fromdata");
+
+getsubButton.addEventListener('click', openSearch);
+function openSearch() {
+    get.style.display='flex';
+}
+
+function closeSearch() {
+    get.style.display='none';
+}
+
+//과목설정창 없애기
 window.onclick=function(event) {
+    if(event.target==get){
+        closeSearch();
+    }
     if(event.target==make){
         closeSub();
     }
 }
 
-//과목설정 - 가져오기
-getsubButton.addEventListener('click', openGetsub);
-function openGetsub() {
-
-}
 
 //가상시계 설정완료, 수정 버튼
 clock_DoneButton.addEventListener('click', submit_clock);
@@ -117,3 +137,18 @@ clock_ModifyButton.addEventListener('click', modify_clock);
 function modify_clock() {
 
 }
+
+
+
+//선택박스 0 1 2 3\
+/*const spawn=require('child_process').spawn;
+
+const result = spawn('python3', ['../scraping/datachange.py', 'NULL', 'NULL', 'NULL', 'NULL', '박종육']);
+
+result.stdout.on('data', function(data){
+    console.log(data.toString());
+});
+result.stderr.on('data', function(data){ 
+    console.log(data.toString()); 
+});*/
+
