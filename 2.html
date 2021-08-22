@@ -89,6 +89,9 @@
                         <td>수강인원</td>
                     </tr>
                 </thead>
+                <tbody id="result_body">
+                    
+                </tbody>
             </table>
         </div>
         <div class="result_table_b">
@@ -133,17 +136,31 @@
             </table>
         </div>
     </section>
-    <script src="js/firstp.js"></script>
+    <script src="/js/firstp.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-        var socket = io();
-        $('#subj').on('submit', function(e) {
-            socket.emit('update class', $('#1').val(), $('#2').val(),$('#3').val(),$('#4').val(),$('#5').val(),$('#6').val(),$('#7').val())
-        });
-        $('#name').on('submit', function(e) {
-            socket.emit('update name', $('#name_txt').val())
-        });
+        // var socket = io();
+        // $('#subj').on('submit', function(e) {
+        //     socket.emit('update class', $('#1').val(), $('#2').val(),$('#3').val(),$('#4').val(),$('#5').val(),$('#6').val(),$('#7').val())
+        // });
+        // $('#name').on('submit', function(e) {
+        //     socket.emit('update name', $('#name_txt').val())
+        // });
+
+        function add(){
+            var maxlength =7;
+            var html = new Array();
+            html.push('<tr><td class="r_body">');
+            html.push('<td class="r_body">');
+            html.push('.');
+            html.push('.');
+            html.push('.');
+            html.push('.');
+            html.push('.');
+            html.push('</td></tr>');
+            $('#result_body').append(html.join(''));
+        }
     </script>
 </body>
 </html>
