@@ -72,12 +72,11 @@ app.get('/sugang_practice/room', (req,res) => {
         });
         socket.on('disconnect', function(){
             console.log(findcount(socket.id));
-            delete counttoID[findcount(socket.id)];
             delete counttoName[findcount(socket.id)];
+            delete counttoID[findcount(socket.id)];
             console.log('user disconnected: ', socket.id);
             io.emit('listupdate', MakeNamesList());
             console.log(counttoName);
-
             count--;
     	});
     });

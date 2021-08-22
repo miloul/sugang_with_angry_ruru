@@ -96,17 +96,30 @@ function closeSub() {
     make.style.display='none';
 }
 
+
+//과목설정 - 가져오기
+const get = document.querySelector("#set_fromdata");
+
+getsubButton.addEventListener('click', openSearch);
+function openSearch() {
+    get.style.display='flex';
+}
+
+function closeSearch() {
+    get.style.display='none';
+}
+
+//과목설정창 없애기
 window.onclick=function(event) {
+    console.log(event.target==get,event.target==make);
+    if(event.target==get){
+        closeSearch();
+    }
     if(event.target==make){
         closeSub();
     }
 }
 
-//과목설정 - 가져오기
-getsubButton.addEventListener('click', openGetsub);
-function openGetsub() {
-
-}
 
 //가상시계 설정완료, 수정 버튼
 clock_DoneButton.addEventListener('click', submit_clock);
